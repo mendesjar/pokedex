@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Russo One", sans-serif;
+}
+
+body {
+  text-align: center;
+  min-height: 100vh;
+  background: rgb(4, 245, 255);
+  background: linear-gradient(
+    170deg,
+    rgba(4, 245, 255, 1) 0%,
+    rgba(39, 152, 199, 1) 100%
+  );
+}
+
+main {
+  position: relative;
+  display: inline-block;
+  margin-top: 5%;
+  padding: 20px;
+}
+
+.pokedex {
+  width: 100%;
+  max-width: 425px;
+}
+
+.pokemon-image {
+  position: absolute;
+  bottom: 55%;
+  left: 55%;
+  transform: translate(-63%, 0);
+  height: 12%;
+}
+
+.title-pokemon {
+  position: absolute;
+  bottom: 40.5%;
+  left: 58%;
+  transform: translate(-63%, 0);
+  color: #aaa;
+  font-size: clamp(7px, 5.5vw, 26px);
+  text-transform: capitalize;
+}
+
+.nome-pokemon {
+  color: #808080;
+}

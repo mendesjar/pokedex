@@ -3,6 +3,9 @@ window.onload = function () {
   const nomePokemon = document.querySelector(".nome-pokemon");
   const imgPokemon = document.querySelector(".pokemon-image");
 
+  const formPokemon = document.querySelector(".form");
+  const inputPokemon = document.querySelector(".input_search");
+
   const buscarPokemons = async (pokemon) => {
     const apiData = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
     const resultData = await apiData.json();
@@ -15,9 +18,15 @@ window.onload = function () {
     nomePokemon.innerHTML = pokemonEncontrado?.name;
     imgPokemon.src =
       pokemonEncontrado["sprites"]["versions"]["generation-v"]["black-white"][
-        "animated"
+      "animated"
       ]["front_default"];
   };
 
-  renderDados(133);
+  formPokemon.addEventListener("submit", (e) => {
+    e.preventDefault();
+    renderDados(inputPokemon?.value?.toLowerCase());
+    inputPokemon.value = "";
+  });
+
+  renderDados(1);
 };

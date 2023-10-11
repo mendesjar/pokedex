@@ -11,11 +11,9 @@ body {
   text-align: center;
   min-height: 100vh;
   background: rgb(4, 245, 255);
-  background: linear-gradient(
-    170deg,
-    rgba(4, 245, 255, 1) 0%,
-    rgba(39, 152, 199, 1) 100%
-  );
+  background: linear-gradient(170deg,
+      rgba(4, 245, 255, 1) 0%,
+      rgba(39, 152, 199, 1) 100%);
 }
 
 main {
@@ -50,4 +48,20 @@ main {
 
 .nome-pokemon {
   color: #808080;
+}
+
+.form {
+  position: absolute;
+  width: 63%;
+  bottom: 30%;
+  left: 15%;
+}
+
+.input_search {
+  width: 100%;
+  padding: 4%;
+  border: 2px solid #808080;
+  border-radius: 5px;
+  color: #808080;
+  font-size: clamp(3px, 4vw, 15px);
 }

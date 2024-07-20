@@ -4,29 +4,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="./script.js"></script>
     <title>Pokedex</title>
   </head>
-  <body>
-    <main>
-      <img src="" alt="" class="pokemon-image" />
-
-      <h1 class="title-pokemon">
-        <span class="id-pokemon"></span> -
-        <span class="nome-pokemon"></span>
-      </h1>
-
-      <form class="form">
-        <input
-          type="search"
-          class="input_search"
-          placeholder="Insira um número ou nome"
-          required
-        />
-      </form>
-
-      <img src="./img/pokedexm.png" class="pokedex" alt="" />
+  <body class="min-h-screen bg-red-600">
+    <main class="bg-stone-800">
+      <div class="flex gap-2">
+        <div class="bg-cyan-400 rounded-full w-11 h-11"></div>
+        <div class="bg-red-950 rounded-full w-5 h-5"></div>
+        <div class="bg-amber-400 rounded-full w-5 h-5"></div>
+        <div class="bg-green-500 rounded-full w-5 h-5"></div>
+      </div>
+      <div class="flex flex-col items-center">
+        <div
+          class="flex items-center justify-center w-3/4 h-[40vh] bg-gray-200 rounded-t-3xl rounded-br-3xl rounded-bl-[3rem] shadow-[-10px_10px_0_0_rgba(156,163,175,1)]"
+        >
+          <div
+            class="w-4/5 h-4/5 bg-green-500 rounded-t-xl rounded-br-xl rounded-bl-3xl"
+          ></div>
+        </div>
+      </div>
     </main>
   </body>
 </html>

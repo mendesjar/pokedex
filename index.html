@@ -10,7 +10,7 @@
         theme: {
           extend: {
             backgroundImage: {
-              "texture-screen": "url('/img/pokedex-texture.png')",
+              "texture-screen": "url('./img/pokedex-texture.png')",
             },
           },
         },
@@ -19,7 +19,7 @@
     <script src="./script.js"></script>
     <title>Pokedex</title>
   </head>
-  <body class="min-h-screen bg-red-600">
+  <body class="h-[100dvh] bg-red-600">
     <main class="bg-stone-800">
       <div class="flex gap-2">
         <div class="bg-cyan-400 rounded-full w-11 h-11"></div>
@@ -31,9 +31,17 @@
         <div
           class="flex items-center justify-center w-3/4 h-[40vh] bg-gray-200 rounded-t-3xl rounded-br-3xl rounded-bl-[3rem] shadow-[-10px_10px_0_0_rgba(156,163,175,1)]"
         >
-          <div
-            class="w-4/5 h-4/5 bg-green-500 rounded-t-xl rounded-br-xl rounded-bl-3xl"
-          ></div>
+          <div class="w-5/6 h-4/5 flex flex-col">
+            <div class="h-[10%] flex justify-center gap-x-5">
+              <span class="bg-red-500 rounded-full w-2 h-2"></span>
+              <span class="bg-red-500 rounded-full w-2 h-2"></span>
+            </div>
+            <div
+              class="z-1 w-full h-full bg-texture-screen bg-no-repeat bg-cover bg-center rounded-t-xl rounded-br-xl rounded-bl-3xl"
+            >
+              <img src="" alt="" class="pokemon-image z-50" />
+            </div>
+          </div>
         </div>
       </div>
     </main>

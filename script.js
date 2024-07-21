@@ -15,10 +15,10 @@ window.onload = function () {
   const renderDados = async (pokemon) => {
     const pokemonEncontrado = await buscarPokemons(pokemon);
     idPokemon.innerHTML = pokemonEncontrado.id;
-    nomePokemon.innerHTML = pokemonEncontrado?.name;
+    nomePokemon.innerHTML = pokemonEncontrado?.name?.toUpperCase();
     imgPokemon.src =
       pokemonEncontrado["sprites"]["versions"]["generation-v"]["black-white"][
-      "animated"
+        "animated"
       ]["front_default"];
   };
 

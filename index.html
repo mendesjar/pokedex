@@ -4,11 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
+            fontFamily: {
+              body: "Russo One",
+            },
             backgroundImage: {
               "texture-screen": "url('./img/pokedex-texture.png')",
             },
@@ -19,9 +28,9 @@
     <script src="./script.js"></script>
     <title>Pokedex</title>
   </head>
-  <body class="h-[100dvh] bg-red-600">
-    <main class="bg-stone-800">
-      <div class="flex gap-2">
+  <body class="h-[100dvh] bg-red-600 font-body">
+    <main>
+      <div class="flex h-16 gap-2 p-2">
         <div class="bg-cyan-400 rounded-full w-11 h-11"></div>
         <div class="bg-red-950 rounded-full w-5 h-5"></div>
         <div class="bg-amber-400 rounded-full w-5 h-5"></div>
@@ -29,7 +38,7 @@
       </div>
       <div class="flex flex-col items-center">
         <div
-          class="flex items-center justify-center w-3/4 h-[40vh] bg-gray-200 rounded-t-3xl rounded-br-3xl rounded-bl-[3rem] shadow-[-10px_10px_0_0_rgba(156,163,175,1)]"
+          class="flex items-center justify-center w-3/4 h-[40vh] bg-gray-200 rounded-t-3xl rounded-br-3xl rounded-bl-[3rem] shadow-[-10px_10px_0_0_rgba(128,128,128,1)]"
         >
           <div class="w-5/6 h-4/5 flex flex-col">
             <div class="h-[10%] flex justify-center gap-x-5">
@@ -37,12 +46,32 @@
               <span class="bg-red-500 rounded-full w-2 h-2"></span>
             </div>
             <div
-              class="z-1 w-full h-full bg-texture-screen bg-no-repeat bg-cover bg-center rounded-t-xl rounded-br-xl rounded-bl-3xl"
+              class="flex items-center justify-center w-full h-full bg-texture-screen bg-no-repeat bg-cover bg-center rounded-t-xl rounded-br-xl rounded-bl-3xl"
             >
-              <img src="" alt="" class="pokemon-image z-50" />
+              <img
+                src=""
+                alt=""
+                class="pokemon-image w-2/4 max-w-xs md:max-w-32"
+              />
             </div>
           </div>
         </div>
+      </div>
+      <div class="h-32 flex items-center justify-center text-white text-2xl">
+        <h1 class="title-pokemon">
+          <span class="id-pokemon"></span> -
+          <span class="nome-pokemon"></span>
+        </h1>
+      </div>
+      <div class="flex justify-center">
+        <form class="form w-5/6">
+          <input
+            type="search"
+            class="input_search w-full p-4 rounded-xl text-[#808080] outline-0 border-2 border-[#808080]"
+            placeholder="Insira um número ou nome"
+            required
+          />
+        </form>
       </div>
     </main>
   </body>

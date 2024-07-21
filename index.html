@@ -21,6 +21,14 @@
             backgroundImage: {
               "texture-screen": "url('./img/pokedex-texture.png')",
             },
+            boxShadow: {
+              main: "-10px 10px 0 0 rgba(128,128,128,1)",
+              input: "-6px 6px 0 0 rgba(128,128,128,1)",
+              "cyan-circle": "-2.5px 2.5px 0 0 rgba(13, 148, 136,1)",
+              "red-circle": "-2.5px 2.5px 0 0 rgba(127, 29, 29,1)",
+              "yellow-circle": "-2.5px 2.5px 0 0 rgba(249, 115, 22,1)",
+              "green-circle": "-2.5px 2.5px 0 0 rgba(22, 163, 74,1)",
+            },
           },
         },
       };
@@ -31,14 +39,20 @@
   <body class="h-[100dvh] bg-red-600 font-body">
     <main>
       <div class="flex h-16 gap-2 p-2">
-        <div class="bg-cyan-400 rounded-full w-11 h-11"></div>
-        <div class="bg-red-950 rounded-full w-5 h-5"></div>
-        <div class="bg-amber-400 rounded-full w-5 h-5"></div>
-        <div class="bg-green-500 rounded-full w-5 h-5"></div>
+        <div
+          class="bg-cyan-400 shadow-cyan-circle rounded-full w-11 h-11"
+        ></div>
+        <div class="bg-red-950 shadow-red-circle rounded-full w-5 h-5"></div>
+        <div
+          class="bg-amber-400 shadow-yellow-circle rounded-full w-5 h-5"
+        ></div>
+        <div
+          class="bg-green-500 shadow-green-circle rounded-full w-5 h-5"
+        ></div>
       </div>
       <div class="flex flex-col items-center">
         <div
-          class="flex items-center justify-center w-3/4 h-[40vh] bg-gray-200 rounded-t-3xl rounded-br-3xl rounded-bl-[3rem] shadow-[-10px_10px_0_0_rgba(128,128,128,1)]"
+          class="flex items-center justify-center w-3/4 h-[40vh] bg-gray-200 rounded-t-3xl rounded-br-3xl rounded-bl-[3rem] shadow-main"
         >
           <div class="w-5/6 h-4/5 flex flex-col">
             <div class="h-[10%] flex justify-center gap-x-5">
@@ -64,10 +78,10 @@
         </h1>
       </div>
       <div class="flex justify-center">
-        <form class="form w-5/6">
+        <form class="form w-4/5">
           <input
             type="search"
-            class="input_search w-full p-4 rounded-xl text-[#808080] outline-0 border-2 border-[#808080]"
+            class="input_search w-full p-4 rounded-xl text-[#808080] outline-0 border-2 border-[#808080] shadow-input"
             placeholder="Insira um número ou nome"
             required
           />

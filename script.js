@@ -26,6 +26,7 @@ window.onload = function () {
     e.preventDefault();
     renderDados(inputPokemon?.value?.toLowerCase());
     inputPokemon.value = "";
+    inputPokemon.blur();
   });
 
   renderDados(1);

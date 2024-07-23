@@ -6,6 +6,8 @@ window.onload = function () {
   const nomePokemon = document.querySelector(".nome-pokemon");
   const imgPokemon = document.querySelector(".pokemon-image");
   const listTypePokemon = document.querySelector(".list-pokemon-type");
+  const pesoPokemon = document.querySelector(".peso-pokemon");
+  const alturaPokemon = document.querySelector(".altura-pokemon");
 
   const formPokemon = document.querySelector(".form");
   const inputPokemon = document.querySelector(".input_search");
@@ -50,6 +52,8 @@ window.onload = function () {
     const imageStatic = pathImage["front_default"];
     idPokemon.innerHTML = pokemonEncontrado.id;
     nomePokemon.innerHTML = pokemonEncontrado?.name?.toUpperCase();
+    pesoPokemon.innerHTML = `${pokemonEncontrado?.weight}kg`;
+    alturaPokemon.innerHTML = `${pokemonEncontrado.height}m`;
     imgPokemon.src = imageAnimated || imageStatic;
     pokemonEncontrado.types.map((el) => {
       const type = el.type.name;

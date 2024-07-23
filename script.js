@@ -20,15 +20,22 @@ window.onload = function () {
     normal: "bg-gray-400 text-zinc-950",
     fire: "bg-red-700 text-white",
     grass: "bg-green-600 text-black",
+    dragon: "bg-green-500 text-black",
+    bug: "bg-green-300 text-black",
     electric: "bg-yellow-500 text-black",
     poison: "bg-violet-950 text-white",
     ice: "bg-sky-400 text-black",
-    water: "bg-blue-700 text-white",
-    flying: "bg-blue-500 text-black",
+    water: "bg-blue-800 text-white",
+    ghost: "bg-blue-600 text-black",
+    flying: "bg-blue-400 text-black",
     fighting: "bg-orange-900 text-white",
-    psycich: "bg-pink-600 text-white",
+    psychic: "bg-pink-600 text-white",
     fairy: "bg-pink-400 text-black",
     steel: "bg-gray-600 text-white",
+    rock: "bg-amber-950 text-white",
+    ground: "bg-orange-400 text-black",
+    dark: "bg-black text-white",
+    dark: "bg-black text-white",
   };
 
   const renderDados = async (pokemon) => {
@@ -67,6 +74,12 @@ window.onload = function () {
 
   buttonCloseDialog.addEventListener("click", (e) => {
     e.preventDefault();
+    dialogInfo.open = false;
+  });
+
+  idPokemon.addEventListener("click", (e) => {
+    e.preventDefault();
+    renderDados(parseInt(idPokemon.innerHTML) + 1);
     dialogInfo.open = false;
   });
 

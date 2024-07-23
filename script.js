@@ -1,7 +1,11 @@
 window.onload = function () {
+  const dialogInfo = document.getElementById("info-dialog");
+  const buttonCloseDialog = document.querySelector(".close-dialog");
+  const buttonInfo = document.querySelector(".button-info");
   const idPokemon = document.querySelector(".id-pokemon");
   const nomePokemon = document.querySelector(".nome-pokemon");
   const imgPokemon = document.querySelector(".pokemon-image");
+  const typePokemon = document.querySelector(".pokemon-type");
 
   const formPokemon = document.querySelector(".form");
   const inputPokemon = document.querySelector(".input_search");
@@ -21,6 +25,9 @@ window.onload = function () {
     idPokemon.innerHTML = pokemonEncontrado.id;
     nomePokemon.innerHTML = pokemonEncontrado?.name?.toUpperCase();
     imgPokemon.src = imageAnimated || imageStatic;
+    typePokemon.innerHTML = pokemonEncontrado.types
+      .map((el) => el.type.name.toUpperCase())
+      .join(" | ");
   };
 
   formPokemon.addEventListener("submit", (e) => {
@@ -28,6 +35,16 @@ window.onload = function () {
     renderDados(inputPokemon?.value?.toLowerCase());
     inputPokemon.value = "";
     inputPokemon.blur();
+  });
+
+  buttonInfo.addEventListener("click", (e) => {
+    e.preventDefault();
+    dialogInfo.open = true;
+  });
+
+  buttonCloseDialog.addEventListener("click", (e) => {
+    e.preventDefault();
+    dialogInfo.open = false;
   });
 
   renderDados(1);

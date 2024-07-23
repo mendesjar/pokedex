@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
       rel="stylesheet"
@@ -42,18 +43,24 @@
   </head>
   <body class="h-[100dvh] bg-red-600 font-body">
     <main>
-      <div class="flex h-16 gap-2 p-2">
-        <div
-          class="bg-cyan-400 shadow-cyan-circle rounded-full w-11 h-11"
-        ></div>
-        <div class="bg-red-950 shadow-red-circle rounded-full w-5 h-5"></div>
-        <div
-          class="bg-amber-400 shadow-yellow-circle rounded-full w-5 h-5"
-        ></div>
-        <div
-          class="bg-green-500 shadow-green-circle rounded-full w-5 h-5"
-        ></div>
+      <div class="flex justify-between h-16 p-2">
+        <div class="flex gap-2">
+          <div
+            class="bg-cyan-400 shadow-cyan-circle rounded-full w-11 h-11"
+          ></div>
+          <div class="bg-red-950 shadow-red-circle rounded-full w-5 h-5"></div>
+          <div
+            class="bg-amber-400 shadow-yellow-circle rounded-full w-5 h-5"
+          ></div>
+          <div
+            class="bg-green-500 shadow-green-circle rounded-full w-5 h-5"
+          ></div>
+        </div>
+        <button class="button-info">
+          <i class="ph-fill ph-info text-3xl text-white"></i>
+        </button>
       </div>
+
       <div class="flex flex-col items-center">
         <div
           class="flex items-center justify-center w-3/4 h-[40vh] bg-gray-200 rounded-t-3xl rounded-br-3xl rounded-bl-[3rem] border-4 border-silver-border shadow-main"

@@ -77,11 +77,5 @@ window.onload = function () {
     dialogInfo.open = false;
   });
 
-  idPokemon.addEventListener("click", (e) => {
-    e.preventDefault();
-    renderDados(parseInt(idPokemon.innerHTML) + 1);
-    dialogInfo.open = false;
-  });
-
   renderDados(1);
 };

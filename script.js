@@ -69,8 +69,9 @@ window.onload = function () {
   }
 
   const heightPokemon = (pokemonHeight) => {
-    const height = pokemonHeight / 10;
-    return height >= 1 ? height + "m" : pokemonHeight + "cm";
+    const heightM = pokemonHeight / 10;
+    const heightCm = pokemonHeight * 10;
+    return heightM >= 1 ? heightM + "m" : heightCm + "cm";
   };
 
   formPokemon.addEventListener("submit", (e) => {

@@ -52,8 +52,8 @@ window.onload = function () {
     const imageStatic = pathImage["front_default"];
     idPokemon.innerHTML = pokemonEncontrado.id;
     nomePokemon.innerHTML = pokemonEncontrado?.name?.toUpperCase();
-    pesoPokemon.innerHTML = `${pokemonEncontrado?.weight}kg`;
-    alturaPokemon.innerHTML = `${pokemonEncontrado.height}m`;
+    pesoPokemon.innerHTML = `${pokemonEncontrado.weight / 10}kg`;
+    alturaPokemon.innerHTML = heightPokemon(pokemonEncontrado.height);
     imgPokemon.src = imageAnimated || imageStatic;
     pokemonEncontrado.types.map((el) => {
       const type = el.type.name;
@@ -62,6 +62,11 @@ window.onload = function () {
       elemento.className = `pokemon-type mt-2 text-sm p-2 rounded-md ${types[type]}`;
       listTypePokemon.appendChild(elemento);
     });
+  };
+
+  const heightPokemon = (pokemonHeight) => {
+    const height = pokemonHeight / 10;
+    return height >= 1 ? height + "m" : pokemonHeight + "cm";
   };
 
   formPokemon.addEventListener("submit", (e) => {

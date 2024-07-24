@@ -1,6 +1,5 @@
 window.onload = function () {
   const dialogInfo = document.getElementById("info-dialog");
-  const buttonCloseDialog = document.querySelector(".close-dialog");
   const buttonInfo = document.querySelector(".button-info");
   const idPokemon = document.querySelector(".id-pokemon");
   const nomePokemon = document.querySelector(".nome-pokemon");
@@ -86,11 +85,6 @@ window.onload = function () {
   buttonInfo.addEventListener("click", (e) => {
     e.preventDefault();
     dialogInfo.open = true;
-  });
-
-  buttonCloseDialog.addEventListener("click", (e) => {
-    e.preventDefault();
-    dialogInfo.open = false;
   });
 
   dialogInfo.addEventListener("click", (e) => {

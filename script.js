@@ -80,6 +80,7 @@ window.onload = function () {
     buscarPokemon(inputPokemon?.value?.toLowerCase());
     inputPokemon.value = "";
     inputPokemon.blur();
+    document.body.scrollIntoView({ behavior: "smooth" });
   });
 
   buttonInfo.addEventListener("click", (e) => {

@@ -19,6 +19,10 @@
           extend: {
             colors: {
               "silver-border": silverColor,
+              "cyan-circle": "rgba(13, 148, 136,1)",
+              "red-circle": "rgba(127, 29, 29,1)",
+              "yellow-circle": "rgba(249, 115, 22,1)",
+              "green-circle": "rgba(22, 163, 74,1)",
             },
             fontFamily: {
               body: "Russo One",
@@ -104,14 +108,16 @@
       <div class="flex justify-between h-16 p-2">
         <div class="flex gap-2">
           <div
-            class="bg-cyan-400 shadow-cyan-circle rounded-full w-11 h-11"
-          ></div>
-          <div class="bg-red-950 shadow-red-circle rounded-full w-5 h-5"></div>
-          <div
-            class="bg-amber-400 shadow-yellow-circle rounded-full w-5 h-5"
+            class="bg-cyan-400 shadow-cyan-circle border-2 border-cyan-circle rounded-full w-11 h-11"
           ></div>
           <div
-            class="bg-green-500 shadow-green-circle rounded-full w-5 h-5"
+            class="bg-red-950 shadow-red-circle border-2 border-red-circle rounded-full w-5 h-5"
+          ></div>
+          <div
+            class="bg-amber-400 shadow-yellow-circle border-2 border-yellow-circle rounded-full w-5 h-5"
+          ></div>
+          <div
+            class="bg-green-500 shadow-green-circle border-2 border-green-circle rounded-full w-5 h-5"
           ></div>
         </div>
         <button class="button-info">

@@ -93,5 +93,12 @@ window.onload = function () {
     dialogInfo.open = false;
   });
 
+  dialogInfo.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (dialogInfo.open) {
+      dialogInfo.open = false;
+    }
+  });
+
   buscarPokemon(1);
 };

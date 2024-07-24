@@ -12,8 +12,10 @@ window.onload = function () {
   const formPokemon = document.querySelector(".form");
   const inputPokemon = document.querySelector(".input_search");
 
+  const baseUrl = "https://pokeapi.co/api/v2/pokemon";
+
   const buscarPokemonService = async (pokemon) => {
-    const apiData = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+    const apiData = await fetch(`${baseUrl}/${pokemon}`);
     const resultData = await apiData.json();
     return resultData;
   };

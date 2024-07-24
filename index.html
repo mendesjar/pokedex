@@ -28,6 +28,8 @@
               body: "Russo One",
             },
             backgroundImage: {
+              "red-gradient":
+                "linear-gradient(90deg, rgba(239,68,68,1) 0%, rgba(185,28,28,1) 100%)",
               "texture-screen": "url('./img/pokedex-texture.png')",
             },
             boxShadow: {
@@ -48,7 +50,7 @@
   <body class="h-[100dvh] bg-red-600 font-body">
     <dialog
       id="info-dialog"
-      class="relative z-10"
+      class="relative z-50"
       aria-labelledby="modal-title"
       aria-modal="true"
     >
@@ -104,7 +106,7 @@
       </div>
     </dialog>
 
-    <main>
+    <main class="relative z-10">
       <div class="flex justify-between h-16 p-2">
         <div class="flex gap-2">
           <div
@@ -163,5 +165,9 @@
         </form>
       </div>
     </main>
+    <div
+      class="z-0 fixed h-screen w-6 md:w-12 bg-red-gradient border-2 border-red-900 rounded-t-lg md:rounded-t-2xl -right-1 top-36 transition-all"
+    ></div>
+    <div class="z-0 fixed h-screen border-l-2 border-red-900 left-2"></div>
   </body>
 </html>

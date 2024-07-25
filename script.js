@@ -1,6 +1,7 @@
 window.onload = function () {
   const dialogInfo = document.getElementById("info-dialog");
   const buttonInfo = document.querySelector(".button-info");
+  const textPokemon = document.querySelector(".text-pokemon");
   const idPokemon = document.querySelector(".id-pokemon");
   const nomePokemon = document.querySelector(".nome-pokemon");
   const imgPokemon = document.querySelector(".pokemon-image");
@@ -94,6 +95,50 @@ window.onload = function () {
       dialogInfo.open = false;
     }
   });
+
+  let gamePadIndex = null;
+
+  window.addEventListener("gamepadconnected", (e) => {
+    const gamePad = e.gamepad;
+    gamePadIndex = gamePad.index;
+
+    const elemento = document.createElement("span");
+    elemento.appendChild(document.createTextNode("A"));
+    elemento.className =
+      "acess-gamepad w-5 h-5 bg-green-500 ml-2 rounded-full text-xs text-black text-center";
+    textPokemon.appendChild(elemento);
+  });
+
+  window.addEventListener("gamepaddisconnected", (e) => {
+    gamePadIndex = null;
+
+    const acessGamepad = document.querySelectorAll(".acess-gamepad");
+    if (acessGamepad?.length) {
+      acessGamepad.forEach((e) => e.remove());
+    }
+  });
+
+  function handleButton(buttons = []) {
+    if (buttons.length) {
+      for (let i = 0; i < buttons.length; i++) {
+        const button = buttons[i];
+        if (i === 0 && button.value > 0) {
+          buscarPokemon(Number(idPokemon.innerHTML) + 1);
+        }
+      }
+    }
+  }
+
+  function gameLoop() {
+    if (gamePadIndex !== null) {
+      const gamePad = navigator.getGamepads()[gamePadIndex];
+      handleButton(gamePad.buttons);
+    }
+
+    requestAnimationFrame(gameLoop);
+  }
+
+  gameLoop();
 
   buscarPokemon(1);
 };

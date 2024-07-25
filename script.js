@@ -14,12 +14,7 @@ window.onload = function () {
   const inputPokemon = document.querySelector(".input_search");
 
   const baseUrl = "https://pokeapi.co/api/v2/pokemon";
-
-  const buscarPokemonService = async (pokemon) => {
-    const apiData = await fetch(`${baseUrl}/${pokemon}`);
-    const resultData = await apiData.json();
-    return resultData;
-  };
+  let gamePadIndex = null;
 
   const types = {
     normal: "bg-gray-400 text-zinc-950",
@@ -41,6 +36,12 @@ window.onload = function () {
     ground: "bg-orange-400 text-black",
     dark: "bg-black text-white",
     dark: "bg-black text-white",
+  };
+
+  const buscarPokemonService = async (pokemon) => {
+    const apiData = await fetch(`${baseUrl}/${pokemon}`);
+    const resultData = await apiData.json();
+    return resultData;
   };
 
   const buscarPokemon = async (pokemon) => {
@@ -96,8 +97,6 @@ window.onload = function () {
       dialogInfo.open = false;
     }
   });
-
-  let gamePadIndex = null;
 
   window.addEventListener("gamepadconnected", (e) => {
     const gamePad = e.gamepad;

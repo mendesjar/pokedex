@@ -1,5 +1,6 @@
 window.onload = function () {
   const dialogInfo = document.getElementById("info-dialog");
+  const info = document.querySelector(".info");
   const buttonInfo = document.querySelector(".button-info");
   const textPokemon = document.querySelector(".text-pokemon");
   const idPokemon = document.querySelector(".id-pokemon");
@@ -102,11 +103,17 @@ window.onload = function () {
     const gamePad = e.gamepad;
     gamePadIndex = gamePad.index;
 
-    const elemento = document.createElement("span");
-    elemento.appendChild(document.createTextNode("A"));
-    elemento.className =
-      "acess-gamepad w-5 h-5 bg-green-500 ml-2 rounded-full text-xs text-black text-center";
-    textPokemon.appendChild(elemento);
+    const a = document.createElement("span");
+    a.appendChild(document.createTextNode("A"));
+    a.className =
+      "acess-gamepad w-5 h-5 bg-green-500 ml-2 rounded-full text-xs text-black text-center shadow-green-circle border-2 border-green-circle";
+    textPokemon.appendChild(a);
+
+    const y = document.createElement("span");
+    y.appendChild(document.createTextNode("Y"));
+    y.className =
+      "acess-gamepad w-5 h-5 bg-yellow-500 rounded-full text-xs text-black text-center shadow-yellow-circle border-2 border-yellow-circle";
+    info.appendChild(y);
   });
 
   window.addEventListener("gamepaddisconnected", (e) => {
@@ -123,7 +130,10 @@ window.onload = function () {
       for (let i = 0; i < buttons.length; i++) {
         const button = buttons[i];
         if (i === 0 && button.value > 0) {
-          buscarPokemon(Number(idPokemon.innerHTML) + 1);
+          setInterval(buscarPokemon(Number(idPokemon.innerHTML) + 1), 800000);
+        }
+        if (i === 3 && button.value > 0) {
+          dialogInfo.open = !dialogInfo.open;
         }
       }
     }

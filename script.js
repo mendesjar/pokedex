@@ -38,6 +38,13 @@ window.onload = function () {
     dark: "bg-black text-white",
   };
 
+  const infoPokemonDebounce = debounce(
+    () => (dialogInfo.open = !dialogInfo.open)
+  );
+  const buscarPokemonDebounce = debounce(() =>
+    buscarPokemon(Number(idPokemon.innerHTML) + 1)
+  );
+
   const buscarPokemonService = async (pokemon) => {
     const apiData = await fetch(`${baseUrl}/${pokemon}`);
     const resultData = await apiData.json();
@@ -139,10 +146,10 @@ window.onload = function () {
       for (let i = 0; i < buttons.length; i++) {
         const button = buttons[i];
         if (i === 0 && button.value > 0) {
-          debounce(() => buscarPokemon(Number(idPokemon.innerHTML) + 1));
+          buscarPokemonDebounce();
         }
         if (i === 3 && button.value > 0) {
-          debounce(() => (dialogInfo.open = !dialogInfo.open));
+          infoPokemonDebounce();
         }
       }
     }

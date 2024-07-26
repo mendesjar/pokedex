@@ -124,15 +124,27 @@ window.onload = function () {
     }
   });
 
+  function debounce(func, wait = 200) {
+    let timeout;
+    return function () {
+      const context = this,
+        args = arguments;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        func.apply(context, args);
+      }, wait);
+    };
+  }
+
   function handleButton(buttons = []) {
     if (buttons.length) {
       for (let i = 0; i < buttons.length; i++) {
         const button = buttons[i];
         if (i === 0 && button.value > 0) {
-          setInterval(buscarPokemon(Number(idPokemon.innerHTML) + 1), 800000);
+          debounce(() => buscarPokemon(Number(idPokemon.innerHTML) + 1));
         }
         if (i === 3 && button.value > 0) {
-          dialogInfo.open = !dialogInfo.open;
+          debounce(() => (dialogInfo.open = !dialogInfo.open));
         }
       }
     }

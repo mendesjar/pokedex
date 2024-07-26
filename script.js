@@ -124,14 +124,12 @@ window.onload = function () {
     }
   });
 
-  function debounce(func, wait = 200) {
-    let timeout;
-    return function () {
-      const context = this,
-        args = arguments;
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        func.apply(context, args);
+  function debounce(func, wait = 300) {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func.apply(this, args);
       }, wait);
     };
   }

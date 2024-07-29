@@ -44,7 +44,7 @@ window.onload = function () {
     }
   }
 
-  function timeDifference(timeData, minutesDifference = 10) {
+  function timeDifference(timeData, minutesDifference = 5) {
     const parsedDate = new Date(Date.parse(timeData));
     const today = new Date();
     const timeDiff = parsedDate.getTime() - today.getTime();

@@ -12,9 +12,50 @@ window.onload = function () {
 
   const formPokemon = document.querySelector(".form");
   const inputPokemon = document.querySelector(".input_search");
+  let gamePadIndex = null;
 
   const baseUrl = "https://pokeapi.co/api/v2/pokemon";
-  let gamePadIndex = null;
+
+  async function cacheRequest(pokemon) {
+    const listPokemonStorage = localStorage.getItem("pokemonList");
+    const listPokemonCache = JSON.parse(listPokemonStorage);
+    if (listPokemonCache?.length) {
+      const cachedValid = listPokemonCache.find(
+        (cache) =>
+          (cache.pkName === pokemon || cache.pkId === Number(pokemon)) &&
+          timeDifference(cache.time)
+      );
+      if (cachedValid) return cachedValid.data;
+    }
+    const apiData = await fetch(`${baseUrl}/${pokemon}`);
+    const apiResult = await apiData.json();
+    if (apiResult.id) {
+      const bodyStorage = {
+        pkId: apiResult.id,
+        pkName: apiResult.name,
+        data: apiResult,
+        time: new Date().toISOString(),
+      };
+      localStorage.setItem(
+        "pokemonList",
+        JSON.stringify([...(listPokemonCache || []), bodyStorage])
+      );
+      return apiResult;
+    }
+  }
+
+  function timeDifference(timeData, minutesDifference = 10) {
+    const parsedDate = new Date(Date.parse(timeData));
+    const today = new Date();
+    const timeDiff = parsedDate.getTime() - today.getTime();
+    const minutesDiff = timeDiff / (60 * 1000);
+    const isToday =
+      parsedDate.getFullYear() === today.getFullYear() &&
+      parsedDate.getMonth() === today.getMonth() &&
+      parsedDate.getDate() === today.getDate();
+    if (isToday && Math.abs(minutesDiff) <= minutesDifference) return true;
+    return false;
+  }
 
   const types = {
     normal: "bg-gray-400 text-zinc-950",
@@ -46,9 +87,8 @@ window.onload = function () {
   );
 
   const buscarPokemonService = async (pokemon) => {
-    const apiData = await fetch(`${baseUrl}/${pokemon}`);
-    const resultData = await apiData.json();
-    return resultData;
+    const apiData = await cacheRequest(pokemon);
+    return apiData;
   };
 
   const buscarPokemon = async (pokemon) => {

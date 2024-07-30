@@ -1,4 +1,7 @@
 window.onload = function () {
+  let keyListPokemon = "pokemonList";
+  let gamePadIndex = null;
+
   const dialogInfo = document.getElementById("info-dialog");
   const info = document.querySelector(".info");
   const buttonInfo = document.querySelector(".button-info");
@@ -12,20 +15,25 @@ window.onload = function () {
 
   const formPokemon = document.querySelector(".form");
   const inputPokemon = document.querySelector(".input_search");
-  let gamePadIndex = null;
 
   const baseUrl = "https://pokeapi.co/api/v2/pokemon";
 
   async function cacheRequest(pokemon) {
-    const listPokemonStorage = localStorage.getItem("pokemonList");
+    const listPokemonStorage = localStorage.getItem(keyListPokemon);
     const listPokemonCache = JSON.parse(listPokemonStorage);
     if (listPokemonCache?.length) {
-      const cachedValid = listPokemonCache.find(
-        (cache) =>
-          (cache.pkName === pokemon || cache.pkId === Number(pokemon)) &&
-          timeDifference(cache.time)
+      const pokemonCache = listPokemonCache.find(
+        (cache) => cache.pkName === pokemon || cache.pkId === Number(pokemon)
       );
-      if (cachedValid) return cachedValid.data;
+      if (pokemonCache) {
+        if (timeDifference(cache.time)) {
+          return pokemonCache.data;
+        }
+        const listAtualizada = listPokemonCache.filter(
+          (pk) => pk.pkId != pokemonCache.pkId
+        );
+        localStorage.setItem(keyListPokemon, JSON.stringify(listAtualizada));
+      }
     }
     const apiData = await fetch(`${baseUrl}/${pokemon}`);
     const apiResult = await apiData.json();
@@ -37,7 +45,7 @@ window.onload = function () {
         time: new Date().toISOString(),
       };
       localStorage.setItem(
-        "pokemonList",
+        keyListPokemon,
         JSON.stringify([...(listPokemonCache || []), bodyStorage])
       );
       return apiResult;

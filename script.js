@@ -145,7 +145,7 @@ window.onload = function () {
     e.preventDefault();
     buscarPokemon(inputPokemon?.value?.toLowerCase());
     inputPokemon.value = "";
-    inputPokemon.blur();
+    if (navigator.userAgentData.mobile) inputPokemon.blur();
     document.body.scrollIntoView({ behavior: "smooth" });
   });
 

@@ -141,11 +141,28 @@ window.onload = function () {
     return heightM >= 1 ? heightM + "m" : heightCm + "cm";
   };
 
+  function detectMob() {
+    const toMatch = [
+      /Android/i,
+      /webOS/i,
+      /iPhone/i,
+      /iPad/i,
+      /iPod/i,
+      /BlackBerry/i,
+      /Windows Phone/i,
+    ];
+
+    return toMatch.some((toMatchItem) => {
+      return navigator.userAgent.match(toMatchItem);
+    });
+  }
+
   formPokemon.addEventListener("submit", (e) => {
     e.preventDefault();
     buscarPokemon(inputPokemon?.value?.toLowerCase());
     inputPokemon.value = "";
-    if (navigator.userAgentData.mobile) inputPokemon.blur();
+    const isMobile = detectMob();
+    if (isMobile) inputPokemon.blur();
     document.body.scrollIntoView({ behavior: "smooth" });
   });
 

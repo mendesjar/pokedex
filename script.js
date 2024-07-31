@@ -1,7 +1,8 @@
-window.onload = function () {
-  let keyListPokemon = "pokemonList";
-  let gamePadIndex = null;
+let keyListPokemon = "pokemonList";
+let gamePadIndex = null;
+let LIMIT_CACHE = 15;
 
+window.onload = function () {
   const dialogInfo = document.getElementById("info-dialog");
   const info = document.querySelector(".info");
   const buttonInfo = document.querySelector(".button-info");
@@ -26,7 +27,7 @@ window.onload = function () {
         (cache) => cache.pkName === pokemon || cache.pkId === Number(pokemon)
       );
       if (pokemonCache) {
-        if (timeDifference(cache.time)) {
+        if (timeDifference(pokemonCache.time)) {
           return pokemonCache.data;
         }
         const listAtualizada = listPokemonCache.filter(
@@ -38,6 +39,13 @@ window.onload = function () {
     const apiData = await fetch(`${baseUrl}/${pokemon}`);
     const apiResult = await apiData.json();
     if (apiResult.id) {
+      const listStorage = [];
+      if (listPokemonCache?.length && listPokemonCache?.length <= LIMIT_CACHE) {
+        listStorage.push(...listPokemonCache);
+        if (listPokemonCache?.length === LIMIT_CACHE) {
+          listStorage.shift();
+        }
+      }
       const bodyStorage = {
         pkId: apiResult.id,
         pkName: apiResult.name,
@@ -46,7 +54,7 @@ window.onload = function () {
       };
       localStorage.setItem(
         keyListPokemon,
-        JSON.stringify([...(listPokemonCache || []), bodyStorage])
+        JSON.stringify([...listStorage, bodyStorage])
       );
       return apiResult;
     }

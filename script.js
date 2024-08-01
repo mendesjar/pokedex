@@ -203,6 +203,9 @@ window.onload = function () {
     y.className =
       "acess-gamepad w-5 h-5 bg-yellow-500 rounded-full text-xs text-black text-center shadow-yellow-circle border-2 border-yellow-circle";
     info.appendChild(y);
+
+    buttonPrevious.style.display = "none";
+    buttonNext.style.display = "none";
   });
 
   window.addEventListener("gamepaddisconnected", (e) => {
@@ -212,6 +215,9 @@ window.onload = function () {
     if (acessGamepad?.length) {
       acessGamepad.forEach((e) => e.remove());
     }
+
+    buttonPrevious.style.display = "inline-block";
+    buttonNext.style.display = "inline-block";
   });
 
   function debounce(func, wait = 300) {

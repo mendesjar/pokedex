@@ -10,6 +10,8 @@ window.onload = function () {
   const idPokemon = document.querySelector(".id-pokemon");
   const nomePokemon = document.querySelector(".nome-pokemon");
   const imgPokemon = document.querySelector(".pokemon-image");
+  const buttonPrevious = document.querySelector(".button-previous");
+  const buttonNext = document.querySelector(".button-next");
   const listTypePokemon = document.querySelector(".list-pokemon-type");
   const pesoPokemon = document.querySelector(".peso-pokemon");
   const alturaPokemon = document.querySelector(".altura-pokemon");
@@ -169,6 +171,14 @@ window.onload = function () {
   buttonInfo.addEventListener("click", (e) => {
     e.preventDefault();
     dialogInfo.open = true;
+  });
+
+  buttonNext.addEventListener("click", () =>
+    buscarPokemon(Number(idPokemon.innerHTML) + 1)
+  );
+
+  buttonPrevious.addEventListener("click", () => {
+    if (idPokemon.innerHTML > 1) buscarPokemon(Number(idPokemon.innerHTML) - 1);
   });
 
   dialogInfo.addEventListener("click", (e) => {

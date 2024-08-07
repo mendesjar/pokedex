@@ -15,18 +15,20 @@ window.onload = function () {
   const listTypePokemon = document.querySelector(".list-pokemon-type");
   const pesoPokemon = document.querySelector(".peso-pokemon");
   const alturaPokemon = document.querySelector(".altura-pokemon");
+  const pokemonGeneration = document.querySelector(".pokemon-generation");
 
   const formPokemon = document.querySelector(".form");
   const inputPokemon = document.querySelector(".input_search");
 
-  const baseUrl = "https://pokeapi.co/api/v2/pokemon";
+  const baseUrl = "https://pokeapi.co/api/v2";
 
-  async function cacheRequest(pokemon) {
+  async function cacheRequest(pokemonSearch) {
     const listPokemonStorage = localStorage.getItem(keyListPokemon);
     const listPokemonCache = JSON.parse(listPokemonStorage);
     if (listPokemonCache?.length) {
       const pokemonCache = listPokemonCache.find(
-        (cache) => cache.pkName === pokemon || cache.pkId === Number(pokemon)
+        (cache) =>
+          cache.pkName === pokemonSearch || cache.pkId === Number(pokemonSearch)
       );
       if (pokemonCache) {
         if (timeDifference(pokemonCache.time)) {
@@ -38,7 +40,7 @@ window.onload = function () {
         localStorage.setItem(keyListPokemon, JSON.stringify(listAtualizada));
       }
     }
-    const apiData = await fetch(`${baseUrl}/${pokemon}`);
+    const apiData = await fetch(`${baseUrl}/pokemon/${pokemonSearch}`);
     const apiResult = await apiData.json();
     if (apiResult.id) {
       const listStorage = [];
@@ -127,6 +129,7 @@ window.onload = function () {
     nomePokemon.innerHTML = pokemon?.name?.toUpperCase();
     pesoPokemon.innerHTML = `${pokemon.weight / 10}kg`;
     alturaPokemon.innerHTML = heightPokemon(pokemon.height);
+    pokemonGeneration.innerHTML = pokemon;
     imgPokemon.src = imageAnimated || imageStatic;
     pokemon.types.map((el) => {
       const type = el.type.name;

@@ -17,6 +17,7 @@ window.onload = function () {
   const alturaPokemon = document.querySelector(".altura-pokemon");
   const pokemonGeneration = document.querySelector(".pokemon-generation");
   const pokemonLegendary = document.querySelector(".legendary");
+  const pokemonMythical = document.querySelector(".mythical");
 
   const formPokemon = document.querySelector(".form");
   const inputPokemon = document.querySelector(".input_search");
@@ -143,8 +144,12 @@ window.onload = function () {
       elemento.className = `pokemon-type mt-2 text-sm p-2 rounded-md ${types[type]}`;
       listTypePokemon.appendChild(elemento);
     });
-    if (pokemon.is_legendary) pokemonLegendary.style.display = "block";
-    else pokemonLegendary.style.display = "none";
+    if (pokemon.is_legendary) {
+      pokemonLegendary.style.display = "block";
+    } else pokemonLegendary.style.display = "none";
+    if (pokemon.is_mythical) {
+      pokemonMythical.style.display = "block";
+    } else pokemonMythical.style.display = "none";
   }
 
   const heightPokemon = (pokemonHeight) => {

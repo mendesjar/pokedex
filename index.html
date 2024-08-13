@@ -19,6 +19,7 @@
           extend: {
             animation: {
               rainbow: "rainbow 10s ease-in-out infinite",
+              purple: "purple 4s ease-in-out infinite",
             },
             keyframes: {
               rainbow: {
@@ -57,6 +58,20 @@
                 },
                 "91%": {
                   "background-color": "rgb(255, 0, 127)",
+                },
+              },
+              purple: {
+                "100%, 0%": {
+                  "background-color": "#1e002e",
+                },
+                "25%": {
+                  "background-color": "#a306fc",
+                },
+                "65%": {
+                  "background-color": "#f03eff",
+                },
+                "85%": {
+                  "background-color": "#47006c",
                 },
               },
             },
@@ -143,12 +158,21 @@
                     class="pokemon-generation flex flex-wrap justify-center gap-2"
                   ></div>
                 </div>
-                <div class="legendary mt-3 text-center">
-                  <p
-                    class="mt-2 text-sm p-2 rounded-md animate-rainbow text-white font-bold tracking-widest uppercase"
-                  >
-                    legendary
-                  </p>
+                <div class="flex flex-wrap justify-center gap-2">
+                  <div class="legendary mt-3 text-center">
+                    <p
+                      class="mt-2 text-sm p-2 rounded-md animate-rainbow text-white font-bold tracking-widest uppercase"
+                    >
+                      legendary
+                    </p>
+                  </div>
+                  <div class="mythical mt-3 text-center">
+                    <p
+                      class="mt-2 text-sm p-2 rounded-md animate-purple text-white font-bold tracking-widest uppercase"
+                    >
+                      mythical
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

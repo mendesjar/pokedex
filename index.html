@@ -17,6 +17,49 @@
       tailwind.config = {
         theme: {
           extend: {
+            animation: {
+              rainbow: "rainbow 10s ease-in-out infinite",
+            },
+            keyframes: {
+              rainbow: {
+                "100%, 0%": {
+                  "background-color": "rgb(255, 0, 0)",
+                },
+                "8%": {
+                  "background-color": "rgb(255, 127, 0)",
+                },
+                "16%": {
+                  "background-color": "rgb(255, 255, 0)",
+                },
+                "25%": {
+                  "background-color": "rgb(127, 255, 0)",
+                },
+                "33%": {
+                  "background-color": "rgb(0, 255, 0)",
+                },
+                "41%": {
+                  "background-color": "rgb(0, 255, 127)",
+                },
+                "50%": {
+                  "background-color": "rgb(0, 255, 255)",
+                },
+                "58%": {
+                  "background-color": "rgb(0, 127, 255)",
+                },
+                "66%": {
+                  "background-color": "rgb(0, 0, 255)",
+                },
+                "75%": {
+                  "background-color": "rgb(127, 0, 255)",
+                },
+                "83%": {
+                  "background-color": "rgb(255, 0, 255)",
+                },
+                "91%": {
+                  "background-color": "rgb(255, 0, 127)",
+                },
+              },
+            },
             colors: {
               "silver-border": silverColor,
               "cyan-circle": "rgba(13, 148, 136,1)",
@@ -70,7 +113,7 @@
           >
             <div class="px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
               <div class="flex flex-col">
-                <div class="mt-3 text-center ml-4">
+                <div class="mt-3 text-center">
                   <h3 class="text-base font-semibold leading-6 text-gray-900">
                     Tipo
                   </h3>
@@ -78,7 +121,7 @@
                     class="list-pokemon-type flex flex-wrap justify-center gap-2"
                   ></div>
                 </div>
-                <div class="mt-3 flex text-center ml-4">
+                <div class="mt-3 flex text-center">
                   <div class="w-6/12">
                     <h3 class="text-base font-semibold leading-6 text-gray-900">
                       Altura
@@ -92,13 +135,20 @@
                     <div class="peso-pokemon"></div>
                   </div>
                 </div>
-                <div class="mt-3 text-center ml-4">
+                <div class="mt-3 text-center">
                   <h3 class="text-base font-semibold leading-6 text-gray-900">
                     Geração
                   </h3>
                   <div
                     class="pokemon-generation flex flex-wrap justify-center gap-2"
                   ></div>
+                </div>
+                <div class="legendary mt-3 text-center">
+                  <p
+                    class="mt-2 text-sm p-2 rounded-md animate-rainbow text-white font-bold tracking-widest uppercase"
+                  >
+                    legendary
+                  </p>
                 </div>
               </div>
             </div>

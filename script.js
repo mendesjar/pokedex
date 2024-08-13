@@ -50,17 +50,21 @@ window.onload = function () {
           listStorage.shift();
         }
       }
+      const apiSpecieData = await fetch(
+        `${baseUrl}/pokemon-species/${apiResult.id}`
+      );
+      const apiSpecieResult = await apiSpecieData.json();
       const bodyStorage = {
         pkId: apiResult.id,
         pkName: apiResult.name,
-        data: apiResult,
+        data: { ...apiResult, ...apiSpecieResult },
         time: new Date().toISOString(),
       };
       localStorage.setItem(
         keyListPokemon,
         JSON.stringify([...listStorage, bodyStorage])
       );
-      return apiResult;
+      return bodyStorage.data;
     }
   }
 

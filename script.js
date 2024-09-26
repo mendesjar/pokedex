@@ -5,6 +5,7 @@ let LIMIT_CACHE = 15;
 window.onload = function () {
   const dialogInfo = document.getElementById("info-dialog");
   const info = document.querySelector(".info");
+  const buttonCyanReset = document.querySelector(".bg-cyan-400");
   const buttonInfo = document.querySelector(".button-info");
   const textPokemon = document.querySelector(".text-pokemon");
   const idPokemon = document.querySelector(".id-pokemon");
@@ -186,6 +187,11 @@ window.onload = function () {
   buttonInfo.addEventListener("click", (e) => {
     e.preventDefault();
     dialogInfo.open = true;
+  });
+
+  buttonCyanReset.addEventListener("dblclick", (e) => {
+    e.preventDefault();
+    localStorage.removeItem("pokemonList");
   });
 
   buttonNext.addEventListener("click", () =>
